@@ -79,7 +79,7 @@ RSpec.describe SongsController, type: :controller do
     end
 
     it "updates the song" do
-      song.reload
+      song.reload #HERE
       expect(song.title).to eq("Moon Safari")
     end
 

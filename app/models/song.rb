@@ -2,12 +2,12 @@ class Song < ActiveRecord::Base
   validates :title, presence: true
   validates :artist_name, presence: true
   validates :released, inclusion: {in: [true, false]}
-  validate :released_year_valid
-  validate :genre_valid
+  validate :released_year_valid?
+  validate :genre_valid?
 
   private
 
-  def genre_valid
+  def genre_valid?
     if genre
       if genre.class != String
         error.add(:genre, "Genre must be a string")
@@ -15,7 +15,7 @@ class Song < ActiveRecord::Base
     end
   end
 
-  def released_year_valid
+  def released_year_valid?
     if released
       if release_year.class == NilClass
         errors.add(:release_year, "Must have year")
@@ -25,7 +25,11 @@ class Song < ActiveRecord::Base
     end
   end
 
-
+  def same_song_year_valid?
+    if release_year
+      
+    end
+  end
 
 
 
